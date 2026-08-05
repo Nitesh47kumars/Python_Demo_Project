@@ -1,1 +1,67 @@
 @import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-base: #f6f5fb;
+  --color-ink: #171426;
+  --color-ink-soft: #6f6b85;
+
+  --color-indigo: #5b4fe9;
+  --color-indigo-soft: #eeecfd;
+  --color-coral: #ff6b5b;
+  --color-coral-soft: #ffece9;
+  --color-teal: #11b58c;
+  --color-teal-soft: #e3f9f3;
+  --color-amber: #f6a62b;
+  --color-amber-soft: #fef2e0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-base);
+  color: var(--color-ink);
+}
+
+/* Ambient colorful backdrop — soft blurred color blobs behind the page content */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.ambient-bg span {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.35;
+}
+
+::selection {
+  background: var(--color-indigo);
+  color: white;
+}
+
+/* subtle custom scrollbar so it feels considered, not default browser chrome */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d9d7ea;
+  border-radius: 999px;
+}
+
+/* respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

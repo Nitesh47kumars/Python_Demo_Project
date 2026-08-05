@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const EMPTY_FORM = { name: "", description: "", price: "", quantity: "" };
 
@@ -19,8 +20,6 @@ export default function ProductForm({ isOpen, onClose, onSubmit, initialData }) 
     }
     setErrors({});
   }, [initialData, isOpen]);
-
-  if (!isOpen) return null;
 
   const validate = () => {
     const next = {};
@@ -43,77 +42,108 @@ export default function ProductForm({ isOpen, onClose, onSubmit, initialData }) 
     });
   };
 
+  const inputClasses =
+    "w-full mt-1.5 border border-ink/10 rounded-xl px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-soft/50 focus:outline-none focus:ring-2 focus:ring-indigo/30 focus:border-indigo transition-colors";
+
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-sm p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">
-          {initialData ? "Edit Product" : "Add Product"}
-        </h2>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="text-xs text-gray-500">Name</label>
-            <input
-              type="text"
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full mt-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
-            />
-            {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name}</p>}
-          </div>
-
-          <div>
-            <label className="text-xs text-gray-500">Description</label>
-            <input
-              type="text"
-              value={form.description}
-              onChange={(e) => setForm({ ...form, description: e.target.value })}
-              className="w-full mt-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="text-xs text-gray-500">Price</label>
-              <input
-                type="number"
-                step="0.01"
-                value={form.price}
-                onChange={(e) => setForm({ ...form, price: e.target.value })}
-                className="w-full mt-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
-              />
-              {errors.price && <p className="text-xs text-red-600 mt-1">{errors.price}</p>}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-ink/40 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-6 md:p-7"
+          >
+            <div className="flex items-center gap-3 mb-5">
+              <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-indigo to-coral flex items-center justify-center text-white text-sm">
+                {initialData ? "✏️" : "+"}
+              </div>
+              <h2 className="font-display text-lg font-semibold text-ink">
+                {initialData ? "Edit product" : "Add product"}
+              </h2>
             </div>
 
-            <div>
-              <label className="text-xs text-gray-500">Quantity</label>
-              <input
-                type="number"
-                value={form.quantity}
-                onChange={(e) => setForm({ ...form, quantity: e.target.value })}
-                className="w-full mt-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
-              />
-              {errors.quantity && <p className="text-xs text-red-600 mt-1">{errors.quantity}</p>}
-            </div>
-          </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="text-xs font-medium text-ink-soft">Name</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Wireless Mouse"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className={inputClasses}
+                />
+                {errors.name && <p className="text-xs text-coral mt-1">{errors.name}</p>}
+              </div>
 
-          <div className="flex justify-end gap-2 pt-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-4 py-2 text-sm rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="px-4 py-2 text-sm rounded-lg bg-gray-900 text-white hover:bg-gray-700"
-            >
-              {initialData ? "Save Changes" : "Add Product"}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+              <div>
+                <label className="text-xs font-medium text-ink-soft">Description</label>
+                <input
+                  type="text"
+                  placeholder="Optional"
+                  value={form.description}
+                  onChange={(e) => setForm({ ...form, description: e.target.value })}
+                  className={inputClasses}
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-medium text-ink-soft">Price (₹)</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    placeholder="0"
+                    value={form.price}
+                    onChange={(e) => setForm({ ...form, price: e.target.value })}
+                    className={`${inputClasses} font-mono`}
+                  />
+                  {errors.price && <p className="text-xs text-coral mt-1">{errors.price}</p>}
+                </div>
+
+                <div>
+                  <label className="text-xs font-medium text-ink-soft">Quantity</label>
+                  <input
+                    type="number"
+                    placeholder="0"
+                    value={form.quantity}
+                    onChange={(e) => setForm({ ...form, quantity: e.target.value })}
+                    className={`${inputClasses} font-mono`}
+                  />
+                  {errors.quantity && <p className="text-xs text-coral mt-1">{errors.quantity}</p>}
+                </div>
+              </div>
+
+              <div className="flex justify-end gap-2 pt-3">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="px-4 py-2.5 text-sm font-medium rounded-full text-ink-soft hover:bg-base transition-colors"
+                >
+                  Cancel
+                </button>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  type="submit"
+                  className="px-5 py-2.5 text-sm font-medium rounded-full bg-gradient-to-r from-indigo to-[#7A5BEA] text-white shadow-md shadow-indigo/25"
+                >
+                  {initialData ? "Save changes" : "Add product"}
+                </motion.button>
+              </div>
+            </form>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

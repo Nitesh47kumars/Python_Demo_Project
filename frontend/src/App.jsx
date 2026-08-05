@@ -84,118 +84,41 @@ export default function App() {
     }
   };
 
-return (
-  <div className="min-h-screen bg-[#f5f7fa] px-4 py-6 md:px-8">
-    <div className="mx-auto max-w-7xl">
-
-      {/* Header */}
-      <div className="mb-8">
-        <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
-          <div>
-            <p className="text-sm text-gray-400">Expense Dashboard</p>
-            <h1 className="mt-1 text-3xl font-bold tracking-tight text-gray-900">
-              Welcome back 👋
-            </h1>
-            <p className="mt-1 text-sm text-gray-500">
-              Here's what's happening with your expenses.
-            </p>
-          </div>
-
-          <Navbar onAddClick={handleAddClick} />
-        </div>
+  return (
+    <div className="relative min-h-screen bg-base px-4 py-6 md:px-10 md:py-10">
+      <div className="ambient-bg">
+        <span className="bg-indigo w-96 h-96 -top-20 -left-20" />
+        <span className="bg-coral w-80 h-80 top-1/3 -right-10" />
+        <span className="bg-amber w-72 h-72 bottom-0 left-1/4" />
       </div>
 
-      {/* Summary */}
-      <div className="mb-6">
+      <div className="relative max-w-6xl mx-auto">
+        <Navbar onAddClick={handleAddClick} />
+
         <SummaryCards analytics={analytics} />
-      </div>
 
-      {/* Analytics */}
-      <div className="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
-
-        {/* Chart */}
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm lg:col-span-2">
-          <div className="mb-5 flex items-center justify-between">
-            <div>
-              <h2 className="text-lg font-semibold text-gray-900">
-                Spending Overview
-              </h2>
-              <p className="mt-1 text-xs text-gray-400">
-                Track your spending activity
-              </p>
-            </div>
-
-            <button className="rounded-lg border border-gray-200 px-3 py-2 text-xs font-medium text-gray-500 hover:bg-gray-50">
-              This Month ▾
-            </button>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-8">
+          <div className="md:col-span-2">
+            <ProductChart products={products} />
           </div>
-
-          <ProductChart products={products} />
-        </div>
-
-        {/* Insight */}
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <div className="mb-5 flex items-center justify-between">
-            <div>
-              <h2 className="text-lg font-semibold text-gray-900">
-                Smart Insight
-              </h2>
-              <p className="mt-1 text-xs text-gray-400">
-                Based on your spending
-              </p>
-            </div>
-
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gray-900 text-sm text-white">
-              ✦
-            </div>
-          </div>
-
           <InsightCard insight={analytics?.insight} />
         </div>
+
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="font-display text-sm font-semibold text-ink uppercase tracking-wide">
+            All products
+          </h2>
+          <span className="text-xs text-ink-soft">{products.length} total</span>
+        </div>
+        <ProductList
+          products={products}
+          loading={loading}
+          error={error}
+          onEdit={handleEditClick}
+          onDelete={setDeleteTarget}
+        />
       </div>
 
-      {/* Products */}
-      <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-
-        {/* Section Header */}
-        <div className="border-b border-gray-100 p-6">
-          <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
-
-            <div>
-              <h2 className="text-lg font-semibold text-gray-900">
-                All Products
-              </h2>
-              <p className="mt-1 text-xs text-gray-400">
-                Manage and track all your products
-              </p>
-            </div>
-
-            <div className="flex gap-2">
-              <button className="rounded-lg border border-gray-200 px-4 py-2 text-xs font-medium text-gray-500 hover:bg-gray-50">
-                Search
-              </button>
-
-              <button className="rounded-lg border border-gray-200 px-4 py-2 text-xs font-medium text-gray-500 hover:bg-gray-50">
-                Filter ▾
-              </button>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Product List */}
-        <div className="p-2 md:p-4">
-          <ProductList
-            products={products}
-            loading={loading}
-            error={error}
-            onEdit={handleEditClick}
-            onDelete={setDeleteTarget}
-          />
-        </div>
-      </div>
-
-      {/* Modals */}
       <ProductForm
         isOpen={formOpen}
         onClose={() => setFormOpen(false)}
@@ -209,8 +132,6 @@ return (
         onConfirm={handleDeleteConfirm}
         onCancel={() => setDeleteTarget(null)}
       />
-
     </div>
-  </div>
-)
+  );
 }
