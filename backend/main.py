@@ -10,7 +10,7 @@ app = FastAPI(title="Python_demo_project API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["https://python-demo-project-frontend.onrender.com/"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
