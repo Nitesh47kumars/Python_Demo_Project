@@ -68,21 +68,21 @@ export default function ProductForm({
     mt-1.5
     rounded-xl
     border
-    border-gray-200
-    bg-gray-50/70
+    border-white/10
+    bg-zinc-900/80
     px-3.5
     py-2.5
     text-sm
-    text-gray-900
-    placeholder:text-gray-400
+    text-white
+    placeholder:text-zinc-500
     outline-none
     transition-all
     duration-200
-    hover:border-gray-300
-    focus:bg-white
-    focus:border-indigo-400
+    hover:border-indigo-500/40
+    focus:border-indigo-500
+    focus:bg-zinc-900
     focus:ring-4
-    focus:ring-indigo-500/10
+    focus:ring-indigo-500/20
   `;
 
   return (
@@ -100,7 +100,7 @@ export default function ProductForm({
             flex
             items-center
             justify-center
-            bg-gray-950/40
+            bg-black/70
             backdrop-blur-md
             p-4
           "
@@ -133,11 +133,14 @@ export default function ProductForm({
               w-full
               max-w-md
               rounded-3xl
-              bg-white/95
-              backdrop-blur-xl
+              bg-gradient-to-br
+              from-zinc-950
+              via-zinc-900
+              to-black
+              backdrop-blur-2xl
               border
-              border-white
-              shadow-[0_25px_80px_rgba(23,20,38,0.18)]
+              border-white/10
+              shadow-[0_25px_90px_rgba(0,0,0,0.6)]
             "
           >
             <div
@@ -149,7 +152,7 @@ export default function ProductForm({
                 h-40
                 w-40
                 rounded-full
-                bg-indigo-500/10
+                bg-indigo-500/20
                 blur-3xl
               "
             />
@@ -163,7 +166,7 @@ export default function ProductForm({
                 h-36
                 w-36
                 rounded-full
-                bg-fuchsia-500/5
+                bg-fuchsia-500/10
                 blur-3xl
               "
             />
@@ -209,7 +212,7 @@ export default function ProductForm({
                         md:text-lg
                         font-bold
                         tracking-tight
-                        text-gray-900
+                        text-white
                       "
                     >
                       {initialData
@@ -217,7 +220,7 @@ export default function ProductForm({
                         : "Add new product"}
                     </h2>
 
-                    <p className="text-[11px] text-gray-400 mt-0.5">
+                    <p className="text-[11px] text-zinc-400 mt-0.5">
                       {initialData
                         ? "Update your inventory details"
                         : "Add an item to your inventory"}
@@ -232,11 +235,12 @@ export default function ProductForm({
                     h-8
                     w-8
                     rounded-xl
-                    bg-gray-50
                     border
-                    border-gray-100
-                    text-gray-400
-                    hover:bg-gray-100
+                    bg-zinc-900
+                    border-white/10
+                    text-zinc-400
+                    hover:bg-zinc-800
+                    hover:text-white
                     hover:text-gray-700
                     transition-all
                     duration-200
@@ -258,7 +262,7 @@ export default function ProductForm({
                       font-semibold
                       uppercase
                       tracking-wider
-                      text-gray-500
+                      text-zinc-400
                     "
                   >
                     Product name
@@ -294,13 +298,13 @@ export default function ProductForm({
                         font-semibold
                         uppercase
                         tracking-wider
-                        text-gray-500
+                        text-zinc-400
                       "
                     >
                       Description
                     </label>
 
-                    <span className="text-[10px] text-gray-400">
+                    <span className="text-[10px] text-zinc-400">
                       Optional
                     </span>
                   </div>
@@ -334,7 +338,7 @@ export default function ProductForm({
                         font-semibold
                         uppercase
                         tracking-wider
-                        text-gray-500
+                        text-zinc-400
                       "
                     >
                       Price
@@ -349,7 +353,7 @@ export default function ProductForm({
                           -translate-y-1/2
                           text-xs
                           font-semibold
-                          text-gray-400
+                          text-zinc-400
                         "
                       >
                         ₹
@@ -384,7 +388,7 @@ export default function ProductForm({
                         font-semibold
                         uppercase
                         tracking-wider
-                        text-gray-500
+                        text-zinc-400
                       "
                     >
                       Quantity
@@ -420,10 +424,10 @@ export default function ProductForm({
                     pt-5
                     mt-2
                     border-t
-                    border-gray-100
+                    border-white/10
                   "
                 >
-                  <p className="hidden sm:block text-[10px] text-gray-400">
+                  <p className="hidden sm:block text-[10px] text-zinc-400">
                     {initialData
                       ? "Changes will update this product"
                       : "Product will be added to inventory"}
@@ -439,12 +443,12 @@ export default function ProductForm({
                         text-xs
                         font-semibold
                         rounded-xl
-                        text-gray-500
+                        text-zinc-300
                         border
-                        border-gray-200
-                        bg-white
-                        hover:bg-gray-50
-                        hover:text-gray-700
+                        border-white/100
+                        bg-zinc-900
+                        hover:bg-zinc-800
+                        hover:text-white
                         transition-all
                         duration-200
                       "
