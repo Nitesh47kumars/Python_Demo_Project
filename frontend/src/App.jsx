@@ -89,7 +89,7 @@ export default function App() {
       <div className="ambient-bg">
         <span className="bg-indigo w-96 h-96 -top-20 -left-20" />
         <span className="bg-coral w-80 h-80 top-1/3 -right-10" />
-        <span className="bg-amber w-72 h-72 bottom-0 left-1/4" />
+        <span className="bg-amber w-110 h-60 bottom-0 left-1/4" />
       </div>
 
       <div className="relative max-w-6xl mx-auto">

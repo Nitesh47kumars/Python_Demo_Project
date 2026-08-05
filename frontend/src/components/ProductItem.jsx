@@ -11,12 +11,13 @@ export default function ProductItem({ product, onEdit, onDelete }) {
         relative
         overflow-hidden
         rounded-3xl
-        bg-white/90
-        backdrop-blur-xl
-        border
-        border-white
-        shadow-[0_8px_30px_rgba(23,20,38,0.05)]
-        hover:shadow-[0_18px_45px_rgba(23,20,38,0.10)]
+        bg-white/[0.055]
+        backdrop-blur-3xl
+        border border-white/[0.09]
+        shadow-[0_12px_40px_rgba(0,0,0,0.28)]
+        hover:bg-white/[0.075]
+        hover:border-white/[0.14]
+        hover:shadow-[0_20px_55px_rgba(0,0,0,0.38)]
         hover:-translate-y-1
         transition-all
         duration-500
@@ -25,17 +26,17 @@ export default function ProductItem({ product, onEdit, onDelete }) {
         flex-col
       "
     >
-      {/* Background glow */}
+      {/* Subtle indigo glow */}
       <div
         className="
           pointer-events-none
           absolute
-          -right-12
-          -top-12
-          h-28
-          w-28
+          -right-16
+          -top-16
+          h-36
+          w-36
           rounded-full
-          bg-indigo/5
+          bg-indigo/10
           blur-3xl
           transition-transform
           duration-700
@@ -43,11 +44,29 @@ export default function ProductItem({ product, onEdit, onDelete }) {
         "
       />
 
+      {/* Subtle coral glow */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -left-20
+          -bottom-20
+          h-32
+          w-32
+          rounded-full
+          bg-coral/5
+          blur-3xl
+          transition-transform
+          duration-700
+          group-hover:scale-125
+        "
+      />
+
       {/* Top section */}
       <div className="relative z-10 flex items-start justify-between mb-4">
         {/* Tier badge */}
         <span
-          className={`
+          className="
             inline-flex
             items-center
             gap-1.5
@@ -60,10 +79,19 @@ export default function ProductItem({ product, onEdit, onDelete }) {
             rounded-full
             border
             shadow-sm
-            ${tierStyles[tier.color]}
-          `}
+          "
+          style={{
+            color: tier.hex,
+            backgroundColor: `${tier.hex}18`,
+            borderColor: `${tier.hex}45`,
+            boxShadow: `0 0 15px ${tier.hex}12`,
+          }}
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-current" />
+          <span
+            className="h-1.5 w-1.5 rounded-full"
+            style={{ backgroundColor: tier.hex }}
+          />
+
           {tier.label}
         </span>
 
@@ -93,12 +121,13 @@ export default function ProductItem({ product, onEdit, onDelete }) {
               flex
               items-center
               justify-center
-              bg-indigo-soft
-              text-indigo
+              bg-indigo/10
+              text-indigo-300
               border
-              border-indigo/10
+              border-indigo/20
               hover:bg-indigo
               hover:text-white
+              hover:border-indigo
               hover:scale-105
               active:scale-95
               transition-all
@@ -118,12 +147,13 @@ export default function ProductItem({ product, onEdit, onDelete }) {
               flex
               items-center
               justify-center
-              bg-coral-soft
+              bg-coral/10
               text-coral
               border
-              border-coral/10
+              border-coral/20
               hover:bg-coral
               hover:text-white
+              hover:border-coral
               hover:scale-105
               active:scale-95
               transition-all
@@ -141,11 +171,11 @@ export default function ProductItem({ product, onEdit, onDelete }) {
           className="
             font-display
             font-bold
-            text-gray-900
+            text-white/90
             text-base
             tracking-tight
             truncate
-            group-hover:text-indigo
+            group-hover:text-indigo-300
             transition-colors
             duration-300
           "
@@ -160,7 +190,7 @@ export default function ProductItem({ product, onEdit, onDelete }) {
           relative
           z-10
           text-xs
-          text-gray-500
+          text-white/40
           leading-5
           mb-5
           line-clamp-2
@@ -176,11 +206,12 @@ export default function ProductItem({ product, onEdit, onDelete }) {
           relative
           z-10
           rounded-2xl
-          bg-gray-50/80
+          bg-black/20
           border
-          border-gray-100
+          border-white/[0.07]
           p-3
           mb-4
+          shadow-inner
         "
       >
         <div className="flex items-center justify-between">
@@ -192,7 +223,7 @@ export default function ProductItem({ product, onEdit, onDelete }) {
                 uppercase
                 tracking-[0.15em]
                 font-bold
-                text-gray-400
+                text-white/30
                 mb-1
               "
             >
@@ -204,7 +235,7 @@ export default function ProductItem({ product, onEdit, onDelete }) {
                 font-mono
                 text-base
                 font-bold
-                text-gray-900
+                text-white/90
               "
             >
               ₹{product.price}
@@ -212,7 +243,7 @@ export default function ProductItem({ product, onEdit, onDelete }) {
           </div>
 
           {/* Divider */}
-          <div className="h-8 w-px bg-gray-200" />
+          <div className="h-8 w-px bg-white/[0.08]" />
 
           {/* Quantity */}
           <div className="text-right">
@@ -222,7 +253,7 @@ export default function ProductItem({ product, onEdit, onDelete }) {
                 uppercase
                 tracking-[0.15em]
                 font-bold
-                text-gray-400
+                text-white/30
                 mb-1
               "
             >
@@ -233,11 +264,7 @@ export default function ProductItem({ product, onEdit, onDelete }) {
               className={`
                 text-xs
                 font-bold
-                ${
-                  lowStock
-                    ? "text-coral"
-                    : "text-gray-700"
-                }
+                ${lowStock ? "text-coral" : "text-white/70"}
               `}
             >
               {product.quantity} units
@@ -272,7 +299,7 @@ export default function ProductItem({ product, onEdit, onDelete }) {
                 rounded-full
                 h-2
                 w-2
-                ${lowStock ? "bg-coral" : "bg-emerald-500"}
+                ${lowStock ? "bg-coral" : "bg-emerald-400"}
               `}
             />
           </span>
@@ -281,11 +308,7 @@ export default function ProductItem({ product, onEdit, onDelete }) {
             className={`
               text-[11px]
               font-semibold
-              ${
-                lowStock
-                  ? "text-coral"
-                  : "text-gray-500"
-              }
+              ${lowStock ? "text-coral" : "text-white/40"}
             `}
           >
             {lowStock
@@ -302,10 +325,9 @@ export default function ProductItem({ product, onEdit, onDelete }) {
             px-2.5
             py-1
             rounded-full
-            ${
-              lowStock
-                ? "bg-coral-soft text-coral border border-coral/10"
-                : "bg-gray-100 text-gray-500 border border-gray-200"
+            ${lowStock
+              ? "bg-coral/10 text-coral border border-coral/20"
+              : "bg-white/[0.05] text-white/40 border border-white/[0.08]"
             }
           `}
         >
@@ -313,22 +335,21 @@ export default function ProductItem({ product, onEdit, onDelete }) {
         </span>
       </div>
 
-      {/* Bottom hover accent */}
+      {/* Bottom shiny accent */}
       <div
         className="
           absolute
           bottom-0
           left-0
           right-0
-          h-0.5
+          h-px
           bg-gradient-to-r
-          from-indigo
-          via-violet-400
+          from-transparent
+          via-indigo/60
           to-transparent
-          scale-x-0
-          origin-left
-          group-hover:scale-x-100
-          transition-transform
+          opacity-0
+          group-hover:opacity-100
+          transition-opacity
           duration-500
         "
       />

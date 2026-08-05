@@ -11,12 +11,17 @@ export default function InsightCard({ insight }) {
         relative
         overflow-hidden
         rounded-3xl
-        bg-white/90
-        backdrop-blur-xl
-        border border-white
-        shadow-[0_12px_40px_rgba(23,20,38,0.07)]
-        hover:shadow-[0_20px_55px_rgba(23,20,38,0.12)]
+        bg-gradient-to-br
+        from-white/[0.10]
+        via-white/[0.055]
+        to-white/[0.025]
+        backdrop-blur-2xl
+        border
+        border-white/[0.14]
+        shadow-[0_12px_40px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.08)]
+        hover:shadow-[0_20px_55px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.12)]
         hover:-translate-y-1
+        hover:border-white/[0.20]
         transition-all
         duration-500
         p-6
@@ -25,7 +30,6 @@ export default function InsightCard({ insight }) {
         flex-col
       "
     >
-
       {/* Amber glow */}
       <div
         className="
@@ -54,14 +58,13 @@ export default function InsightCard({ insight }) {
           h-40
           w-40
           rounded-full
-          bg-indigo/5
+          bg-indigo/10
           blur-3xl
         "
       />
 
-
+      {/* Header */}
       <div className="relative z-10 flex items-center gap-3 mb-6">
-        {/* Icon */}
         <motion.div
           whileHover={{ rotate: 8, scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
@@ -70,29 +73,28 @@ export default function InsightCard({ insight }) {
             w-10
             rounded-2xl
             bg-gradient-to-br
-            from-amber-50
-            to-orange-100
+            from-amber/20
+            to-orange-500/10
             border
-            border-amber-100
+            border-amber/20
             flex
             items-center
             justify-center
-            text-amber-600
+            text-amber-300
             text-lg
-            shadow-sm
+            shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]
           "
         >
           ✦
         </motion.div>
 
-        {/* Title */}
         <div className="flex-1">
           <div className="flex items-center gap-2">
             <p
               className="
                 text-[11px]
                 font-bold
-                text-gray-900
+                text-white/90
                 uppercase
                 tracking-[0.16em]
               "
@@ -100,7 +102,6 @@ export default function InsightCard({ insight }) {
               Quick Insight
             </p>
 
-            {/* Live indicator */}
             <span className="relative flex h-2 w-2">
               <span
                 className="
@@ -122,29 +123,28 @@ export default function InsightCard({ insight }) {
                   rounded-full
                   h-2
                   w-2
-                  bg-amber-500
+                  bg-amber-400
                 "
               />
             </span>
           </div>
 
-          <p className="text-[11px] text-gray-400 mt-1">
+          <p className="text-[11px] text-white/40 mt-1">
             Based on your inventory
           </p>
         </div>
 
-        {/* More button */}
         <button
           className="
             h-8
             w-8
             rounded-xl
             border
-            border-gray-100
-            bg-gray-50
-            text-gray-400
-            hover:bg-gray-100
-            hover:text-gray-700
+            border-white/10
+            bg-white/[0.04]
+            text-white/35
+            hover:bg-white/[0.08]
+            hover:text-white/70
             transition-all
             duration-200
           "
@@ -153,13 +153,11 @@ export default function InsightCard({ insight }) {
         </button>
       </div>
 
-
+      {/* Content */}
       <div className="relative z-10 flex-1 flex items-center">
         <div className="w-full">
-
-          {/* Section label */}
           <div className="flex items-center gap-2 mb-4">
-            <div className="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
+            <div className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
 
             <span
               className="
@@ -167,7 +165,7 @@ export default function InsightCard({ insight }) {
                 font-bold
                 uppercase
                 tracking-[0.18em]
-                text-gray-400
+                text-white/35
               "
             >
               Inventory Insight
@@ -178,15 +176,13 @@ export default function InsightCard({ insight }) {
                 h-px
                 flex-1
                 bg-gradient-to-r
-                from-gray-200
+                from-white/10
                 to-transparent
               "
             />
           </div>
 
-          {/* Main insight */}
           <div className="relative">
-            {/* Accent line */}
             <div
               className="
                 absolute
@@ -199,6 +195,7 @@ export default function InsightCard({ insight }) {
                 from-amber-400
                 via-orange-400
                 to-amber-500
+                shadow-[0_0_12px_rgba(245,158,11,0.25)]
               "
             />
 
@@ -208,7 +205,7 @@ export default function InsightCard({ insight }) {
                 text-base
                 md:text-lg
                 font-semibold
-                text-gray-900
+                text-white/90
                 leading-8
                 tracking-tight
               "
@@ -217,7 +214,6 @@ export default function InsightCard({ insight }) {
             </p>
           </div>
 
-
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <div
               className="
@@ -225,12 +221,12 @@ export default function InsightCard({ insight }) {
                 items-center
                 gap-2
                 rounded-full
-                bg-amber-50
+                bg-amber/10
                 border
-                border-amber-100
+                border-amber/20
                 px-3
                 py-1.5
-                shadow-sm
+                shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]
               "
             >
               <span className="text-sm">✦</span>
@@ -239,21 +235,21 @@ export default function InsightCard({ insight }) {
                 className="
                   text-[11px]
                   font-semibold
-                  text-amber-700
+                  text-amber-300
                 "
               >
                 Smart Analysis
               </span>
             </div>
 
-            <span className="text-[11px] text-gray-400">
+            <span className="text-[11px] text-white/35">
               Based on current inventory
             </span>
           </div>
         </div>
       </div>
 
-
+      {/* Footer */}
       <div
         className="
           relative
@@ -261,7 +257,7 @@ export default function InsightCard({ insight }) {
           mt-6
           pt-4
           border-t
-          border-gray-100
+          border-white/[0.08]
           flex
           items-center
           justify-between
@@ -273,7 +269,9 @@ export default function InsightCard({ insight }) {
               h-6
               w-6
               rounded-lg
-              bg-gray-50
+              bg-white/[0.04]
+              border
+              border-white/[0.06]
               flex
               items-center
               justify-center
@@ -283,7 +281,7 @@ export default function InsightCard({ insight }) {
             ✨
           </div>
 
-          <span className="text-[11px] font-medium text-gray-500">
+          <span className="text-[11px] font-medium text-white/40">
             Inventory analysis
           </span>
         </div>
@@ -294,7 +292,7 @@ export default function InsightCard({ insight }) {
             font-medium
             uppercase
             tracking-wider
-            text-gray-300
+            text-white/25
           "
         >
           Live
