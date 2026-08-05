@@ -21,7 +21,7 @@ export default function ConfirmDialog({
             flex
             items-center
             justify-center
-            bg-gray-950/40
+            bg-gray-950/70
             backdrop-blur-md
             p-4
           "
@@ -55,22 +55,22 @@ export default function ConfirmDialog({
               w-full
               max-w-sm
               rounded-3xl
-              bg-white/95
+              bg-[#111015]/95
               backdrop-blur-xl
               border
-              border-white
-              shadow-[0_25px_80px_rgba(23,20,38,0.18)]
+              border-white/10
+              shadow-[0_25px_80px_rgba(0,0,0,0.55)]
             "
           >
-            
+            {/* Ambient glow — ProductChart style */}
             <div
               className="
                 pointer-events-none
                 absolute
-                -right-16
-                -top-16
-                h-40
-                w-40
+                -right-20
+                -top-20
+                h-52
+                w-52
                 rounded-full
                 bg-rose-500/10
                 blur-3xl
@@ -84,19 +84,18 @@ export default function ConfirmDialog({
               className="
                 pointer-events-none
                 absolute
-                -left-16
-                -bottom-16
-                h-32
-                w-32
+                -left-24
+                -bottom-24
+                h-48
+                w-48
                 rounded-full
-                bg-orange-500/5
+                bg-indigo-500/10
                 blur-3xl
               "
             />
 
             <div className="relative z-10 p-6 md:p-7">
-
-
+              {/* Header */}
               <div className="flex items-start justify-between mb-5">
                 <motion.div
                   initial={{ scale: 0.8, rotate: -8 }}
@@ -112,15 +111,15 @@ export default function ConfirmDialog({
                     w-11
                     rounded-2xl
                     bg-gradient-to-br
-                    from-rose-50
-                    to-orange-100
+                    from-rose-500/15
+                    to-red-500/10
                     border
-                    border-rose-100
+                    border-rose-500/20
                     flex
                     items-center
                     justify-center
                     text-lg
-                    shadow-sm
+                    shadow-[0_8px_25px_rgba(244,63,94,0.12)]
                   "
                 >
                   🗑️
@@ -136,7 +135,7 @@ export default function ConfirmDialog({
                       rounded-full
                       bg-rose-500
                       border-2
-                      border-white
+                      border-[#111015]
                     "
                   />
                 </motion.div>
@@ -148,12 +147,12 @@ export default function ConfirmDialog({
                     h-8
                     w-8
                     rounded-xl
-                    bg-gray-50
+                    bg-white/5
                     border
-                    border-gray-100
-                    text-gray-400
-                    hover:bg-gray-100
-                    hover:text-gray-700
+                    border-white/10
+                    text-gray-500
+                    hover:bg-white/10
+                    hover:text-gray-200
                     transition-all
                     duration-200
                   "
@@ -163,7 +162,7 @@ export default function ConfirmDialog({
                 </button>
               </div>
 
-
+              {/* Title */}
               <div className="mb-3">
                 <h2
                   className="
@@ -171,7 +170,7 @@ export default function ConfirmDialog({
                     md:text-lg
                     font-bold
                     tracking-tight
-                    text-gray-900
+                    text-white
                   "
                 >
                   Delete product?
@@ -180,7 +179,7 @@ export default function ConfirmDialog({
                 <p
                   className="
                     text-[11px]
-                    text-gray-400
+                    text-gray-500
                     mt-1
                   "
                 >
@@ -188,14 +187,14 @@ export default function ConfirmDialog({
                 </p>
               </div>
 
-
+              {/* Message */}
               <div
                 className="
                   relative
                   rounded-2xl
-                  bg-gray-50/80
+                  bg-white/[0.035]
                   border
-                  border-gray-100
+                  border-white/[0.08]
                   px-4
                   py-3.5
                   mb-5
@@ -212,7 +211,7 @@ export default function ConfirmDialog({
                     rounded-r-full
                     bg-gradient-to-b
                     from-rose-400
-                    to-orange-400
+                    to-red-500
                   "
                 />
 
@@ -221,7 +220,7 @@ export default function ConfirmDialog({
                     pl-2
                     text-sm
                     font-medium
-                    text-gray-700
+                    text-gray-300
                     leading-6
                   "
                 >
@@ -239,20 +238,23 @@ export default function ConfirmDialog({
                     items-center
                     justify-center
                     rounded-full
-                    bg-rose-50
+                    bg-rose-500/10
+                    border
+                    border-rose-500/15
                     text-[10px]
-                    text-rose-500
+                    font-bold
+                    text-rose-400
                   "
                 >
                   !
                 </span>
 
-                <span className="text-[11px] text-gray-400">
+                <span className="text-[11px] text-gray-500">
                   This action cannot be undone.
                 </span>
               </div>
 
-
+              {/* Footer */}
               <div
                 className="
                   flex
@@ -261,7 +263,7 @@ export default function ConfirmDialog({
                   gap-2
                   pt-4
                   border-t
-                  border-gray-100
+                  border-white/[0.08]
                 "
               >
                 <motion.button
@@ -273,13 +275,13 @@ export default function ConfirmDialog({
                     py-2.5
                     rounded-xl
                     border
-                    border-gray-200
-                    bg-white
+                    border-white/10
+                    bg-white/[0.04]
                     text-xs
                     font-semibold
-                    text-gray-500
-                    hover:bg-gray-50
-                    hover:text-gray-700
+                    text-gray-400
+                    hover:bg-white/[0.08]
+                    hover:text-gray-200
                     transition-all
                     duration-200
                   "
@@ -310,7 +312,7 @@ export default function ConfirmDialog({
                     font-semibold
                     shadow-lg
                     shadow-rose-500/20
-                    hover:shadow-rose-500/30
+                    hover:shadow-rose-500/35
                     transition-shadow
                     duration-300
                   "
@@ -335,6 +337,21 @@ export default function ConfirmDialog({
                 </motion.button>
               </div>
             </div>
+
+            {/* Bottom accent — matches ProductChart */}
+            <div
+              className="
+                absolute
+                bottom-0
+                left-5
+                right-5
+                h-px
+                bg-gradient-to-r
+                from-transparent
+                via-white/10
+                to-transparent
+              "
+            />
           </motion.div>
         </motion.div>
       )}
