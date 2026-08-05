@@ -82,11 +82,10 @@ export default function ProductChart({ products }) {
         relative
         overflow-hidden
         rounded-3xl
-        bg-white/90
-        backdrop-blur-xl
-        border border-white
-        shadow-[0_12px_40px_rgba(23,20,38,0.07)]
-        hover:shadow-[0_20px_55px_rgba(23,20,38,0.11)]
+        bg-[#111015]/90
+border-white/10
+shadow-[0_12px_40px_rgba(0,0,0,0.35)]
+hover:shadow-[0_20px_55px_rgba(0,0,0,0.5)]
         hover:-translate-y-1
         transition-all
         duration-500
@@ -310,41 +309,41 @@ export default function ProductChart({ products }) {
             barCategoryGap="22%"
           >
             <CartesianGrid
-              strokeDasharray="4 5"
-              stroke="#EFEDF8"
-              vertical={false}
-            />
+  strokeDasharray="4 5"
+  stroke="#2A2738"
+  vertical={false}
+/>
 
-            <XAxis
-              dataKey="name"
-              tick={{
-                fontSize: 10,
-                fill: "#6F6B85",
-              }}
-              axisLine={{
-                stroke: "#EFEDF8",
-              }}
-              tickLine={false}
-              tickMargin={8}
-            />
+<XAxis
+  dataKey="name"
+  tick={{
+    fontSize: 10,
+    fill: "#A7A3B8",
+  }}
+  axisLine={{
+    stroke: "#2A2738",
+  }}
+  tickLine={false}
+  tickMargin={8}
+/>
 
-            <YAxis
-              tick={{
-                fontSize: 10,
-                fill: "#9B97AD",
-              }}
-              axisLine={false}
-              tickLine={false}
-              tickMargin={6}
-            />
+<YAxis
+  tick={{
+    fontSize: 10,
+    fill: "#777287",
+  }}
+  axisLine={false}
+  tickLine={false}
+  tickMargin={6}
+/>
 
-            <Tooltip
-              content={<CustomTooltip />}
-              cursor={{
-                fill: "#F6F5FB",
-                radius: 8,
-              }}
-            />
+<Tooltip
+  content={<CustomTooltip />}
+  cursor={{
+    fill: "#FFFFFF08",
+    radius: 8,
+  }}
+/>
 
             <Bar
               dataKey="price"

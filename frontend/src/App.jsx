@@ -85,7 +85,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-white/90 px-4 py-6 md:px-10 md:py-10">
+    <div className="relative min-h-screen bg-black/10 px-4 py-6 md:px-10 md:py-10">
       <div className="ambient-bg">
         <span className="bg-indigo w-96 h-96 -top-20 -left-20" />
         <span className="bg-coral w-80 h-80 top-1/3 -right-10" />

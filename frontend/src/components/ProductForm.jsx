@@ -140,10 +140,6 @@ export default function ProductForm({
               shadow-[0_25px_80px_rgba(23,20,38,0.18)]
             "
           >
-            {/* =====================================
-                BACKGROUND DECORATION
-            ====================================== */}
-
             <div
               className="
                 pointer-events-none
@@ -174,9 +170,6 @@ export default function ProductForm({
 
             <div className="relative z-10 p-6 md:p-7">
 
-              {/* =====================================
-                  HEADER
-              ====================================== */}
 
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
@@ -253,9 +246,6 @@ export default function ProductForm({
                 </button>
               </div>
 
-              {/* =====================================
-                  FORM
-              ====================================== */}
 
               <form onSubmit={handleSubmit} className="space-y-4">
 
@@ -420,10 +410,6 @@ export default function ProductForm({
                     )}
                   </div>
                 </div>
-
-                {/* =====================================
-                    FOOTER
-                ====================================== */}
 
                 <div
                   className="
