@@ -8,19 +8,19 @@ export function getTier(price) {
   if (price < 10000) {
     return {
       label: "Budget",
-      color: "low",
+      hex: "#22C99A",
     };
   }
 
   if (price < 50000) {
     return {
       label: "Standard",
-      color: "medium",
+      hex: "#756BFF",
     };
   }
 
   return {
     label: "Premium",
-    color: "high",
+    hex: "#FF7466",
   };
 }
