@@ -6,7 +6,7 @@ const container = {
   show: { transition: { staggerChildren: 0.06 } },
 };
 
-export default function ProductList({ products, loading, error, onEdit, onDelete }) {
+export default function ProductList({ products, loading, error, onEdit, onDelete, onAddClick }) {
   if (loading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 animate-pulse">
@@ -30,13 +30,21 @@ export default function ProductList({ products, loading, error, onEdit, onDelete
 
   if (products.length === 0) {
     return (
-      <div className="rounded-2xl bg-white border border-dashed border-ink/15 p-10 text-center">
-        <div className="h-10 w-10 rounded-xl bg-indigo-soft flex items-center justify-center text-indigo text-lg mx-auto mb-3">
+      <button
+        onClick={onAddClick}
+        className="w-full flex flex-col items-center justify-center gap-3 group bg-black/40 border border-dashed border-ink/15 p-10 text-center"
+      >
+        <div
+          className="flex h-10 w-10 items-center justify-center rounded bg-indigo-soft text-white transition-transform duration-200 group-hover:scale-110"
+        >
           +
         </div>
+
         <p className="text-sm font-medium text-ink">No products yet</p>
-        <p className="text-xs text-ink-soft mt-1">Add your first product to see it here.</p>
-      </div>
+        <p className="text-xs text-ink-soft">
+          Add your first product to see it here.
+        </p>
+      </button>
     );
   }
 

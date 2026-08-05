@@ -114,6 +114,7 @@ export default function App() {
           products={products}
           loading={loading}
           error={error}
+          onAddClick={handleAddClick}
           onEdit={handleEditClick}
           onDelete={setDeleteTarget}
         />
