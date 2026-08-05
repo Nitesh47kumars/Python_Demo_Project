@@ -5,14 +5,14 @@ export const tierStyles = {
 };
 
 export function getTier(price) {
-  if (price < 100) {
+  if (price < 10000) {
     return {
       label: "Budget",
       color: "low",
     };
   }
 
-  if (price < 500) {
+  if (price < 50000) {
     return {
       label: "Standard",
       color: "medium",
