@@ -19,7 +19,7 @@ export default function Navbar({ onAddClick }) {
           <h1 className="font-display text-lg md:text-xl font-semibold text-ink leading-tight">
             Python_demo_project
           </h1>
-          <p className="text-xs text-ink-soft hidden sm:block">Inventory, at a glance</p>
+          <p className="text-xs text-ink-soft hidden sm:block">for Shambala Technical Project</p>
         </div>
       </div>
 

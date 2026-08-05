@@ -133,24 +133,6 @@ export default function InsightCard({ insight }) {
             Based on your inventory
           </p>
         </div>
-
-        <button
-          className="
-            h-8
-            w-8
-            rounded-xl
-            border
-            border-white/10
-            bg-white/[0.04]
-            text-white/35
-            hover:bg-white/[0.08]
-            hover:text-white/70
-            transition-all
-            duration-200
-          "
-        >
-          ···
-        </button>
       </div>
 
       {/* Content */}
@@ -286,15 +268,8 @@ export default function InsightCard({ insight }) {
           </span>
         </div>
 
-        <span
-          className="
-            text-[10px]
-            font-medium
-            uppercase
-            tracking-wider
-            text-white/25
-          "
-        >
+        <span className="flex items-center gap-1.5 text-[9px] text-gray-400">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
           Live
         </span>
       </div>

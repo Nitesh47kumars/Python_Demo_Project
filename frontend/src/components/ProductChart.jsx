@@ -83,9 +83,9 @@ export default function ProductChart({ products }) {
         overflow-hidden
         rounded-3xl
         bg-[#111015]/90
-border-white/10
-shadow-[0_12px_40px_rgba(0,0,0,0.35)]
-hover:shadow-[0_20px_55px_rgba(0,0,0,0.5)]
+        border-white/10
+        shadow-[0_12px_40px_rgba(0,0,0,0.35)]
+        hover:shadow-[0_20px_55px_rgba(0,0,0,0.5)]
         hover:-translate-y-1
         transition-all
         duration-500
@@ -169,7 +169,7 @@ hover:shadow-[0_20px_55px_rgba(0,0,0,0.5)]
                 className="
                   text-[11px]
                   font-bold
-                  text-gray-900
+                  text-ink
                   uppercase
                   tracking-[0.16em]
                 "
@@ -201,28 +201,6 @@ hover:shadow-[0_20px_55px_rgba(0,0,0,0.5)]
             </p>
           </div>
         </div>
-
-        {/* Small decorative menu */}
-        <button
-          className="
-            hidden
-            sm:flex
-            h-8
-            w-8
-            items-center
-            justify-center
-            rounded-xl
-            bg-gray-50
-            border
-            border-gray-100
-            text-gray-400
-            hover:bg-gray-100
-            hover:text-gray-700
-            transition-all
-          "
-        >
-          ···
-        </button>
       </div>
 
 
@@ -309,41 +287,41 @@ hover:shadow-[0_20px_55px_rgba(0,0,0,0.5)]
             barCategoryGap="22%"
           >
             <CartesianGrid
-  strokeDasharray="4 5"
-  stroke="#2A2738"
-  vertical={false}
-/>
+              strokeDasharray="4 5"
+              stroke="#2A2738"
+              vertical={false}
+            />
 
-<XAxis
-  dataKey="name"
-  tick={{
-    fontSize: 10,
-    fill: "#A7A3B8",
-  }}
-  axisLine={{
-    stroke: "#2A2738",
-  }}
-  tickLine={false}
-  tickMargin={8}
-/>
+            <XAxis
+              dataKey="name"
+              tick={{
+                fontSize: 10,
+                fill: "#A7A3B8",
+              }}
+              axisLine={{
+                stroke: "#2A2738",
+              }}
+              tickLine={false}
+              tickMargin={8}
+            />
 
-<YAxis
-  tick={{
-    fontSize: 10,
-    fill: "#777287",
-  }}
-  axisLine={false}
-  tickLine={false}
-  tickMargin={6}
-/>
+            <YAxis
+              tick={{
+                fontSize: 10,
+                fill: "#777287",
+              }}
+              axisLine={false}
+              tickLine={false}
+              tickMargin={6}
+            />
 
-<Tooltip
-  content={<CustomTooltip />}
-  cursor={{
-    fill: "#FFFFFF08",
-    radius: 8,
-  }}
-/>
+            <Tooltip
+              content={<CustomTooltip />}
+              cursor={{
+                fill: "#FFFFFF08",
+                radius: 8,
+              }}
+            />
 
             <Bar
               dataKey="price"
