@@ -170,7 +170,7 @@ export default function InsightCard({ insight }) {
                 text-gray-400
               "
             >
-              AI Inventory Insight
+              Inventory Insight
             </span>
 
             <div
