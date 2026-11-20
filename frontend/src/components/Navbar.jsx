@@ -17,7 +17,7 @@ export default function Navbar({ onAddClick }) {
         </motion.div>
         <div>
           <h1 className="font-display text-lg md:text-xl font-semibold text-ink leading-tight">
-            Python_demo_project
+            ECOMMERCE_PROJECT
           </h1>
           <p className="text-xs text-ink-soft hidden sm:block">for Shambala Technical Project</p>
         </div>
